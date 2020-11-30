@@ -134,7 +134,7 @@ def register_mosrs_account():
     name, email = userinfo()
     name  = prompt_or_default('What is your name?',name)
     email = prompt_or_default('What is your work email address?',email)
-    request = Popen(['mail', '-s','MOSRS account request for %s'%name, 'access_help@nf.nci.org.au'], stdin=PIPE)
+    request = Popen(['mail', '-s','MOSRS account request for %s'%name, 'cws_help@nf.nci.org.au'], stdin=PIPE)
     request.communicate(dedent("""
             ACCESS user %s (NCI id %s, email <%s>) would like to request an account on MOSRS.
             Can the sponsor for their institution please submit a request on their behalf at
@@ -144,7 +144,7 @@ def register_mosrs_account():
                 https://code.metoffice.gov.uk/trac/home/wiki/UserList
             """%(name, environ['USER'], email)))
     print('\n')
-    info('Submitting MOSRS account request for %s <%s> to access_help'%(name,email))
+    info('Submitting MOSRS account request for %s <%s> to cws_help'%(name,email))
     info('Once your account has been activated (will take at least one UK business day) '+
             'you will receive an email detailing how to set up your password\n')
 
@@ -222,7 +222,7 @@ def main():
     except SetupError:
         todo('Once this has been done please run this setup script again\n')
     finally:
-        print('You can ask for help with the ACCESS systems by emailing "access_help@nf.nci.org.au"\n')
+        print('You can ask for help with the ACCESS systems by emailing "cws_help@nf.nci.org.au"\n')
 
 if __name__ == '__main__':
     main()
