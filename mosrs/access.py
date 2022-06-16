@@ -27,20 +27,12 @@ def main():
     passwd = getpass('Please enter your password for user %s: '%os.environ['USER'])
 
     # Test the password
-    r = requests.get('https://access-svn.nci.org.au/svn/um',
+    r = requests.get('https://trac.nci.org.au/svn/access_tools',
             auth=(os.environ['USER'], passwd), verify=False)
     if r.status_code == 401:
         print('ERROR: Bad password for user %s'%os.environ['USER'])
         return
     r.raise_for_status()
-
-    realm = '<https://access-svn.nci.org.au:443> AccessCollab'
-    key = md5(realm).hexdigest()
-    gpg.preset_passphrase(key, passwd)
-
-    nemo_realm = '<https://access-svn.nci.org.au:443> nemo'
-    nemo_key = md5(nemo_realm).hexdigest()
-    gpg.preset_passphrase(nemo_key, passwd)
 
     realm = '<https://trac.nci.org.au:443> NCI Projects'
     key = md5(realm).hexdigest()

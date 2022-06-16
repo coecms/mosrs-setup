@@ -21,7 +21,7 @@ from setuptools import setup, find_packages
 
 setup(
         name     = 'mosrs',
-        version  = '0.4.0',
+        version  = '0.5.0',
         packages = find_packages(),
         install_requires = [
             'python-ldap',
